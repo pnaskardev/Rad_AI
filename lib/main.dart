@@ -5,6 +5,7 @@ import 'package:radio_ai/pages/homepage.dart';
 
 void main() 
 {
+
   SystemChrome.setSystemUIOverlayStyle
   (
     const SystemUiOverlayStyle(statusBarColor: Colors.transparent)
@@ -15,7 +16,7 @@ void main()
  
 class MyApp extends StatelessWidget 
 {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget
         fontFamily: GoogleFonts.poppins().fontFamily
       ),
       debugShowCheckedModeBanner:false,
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }

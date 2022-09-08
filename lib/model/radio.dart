@@ -2,54 +2,44 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-class MyRadioList 
-{
+class MyRadioList {
   final List<MyRadio> radios;
-  
-  MyRadioList
-  ({
-    required this.radios,
+  MyRadioList({
+    this.radios,
   });
 
-  MyRadioList copyWith
-  ({
-    required List<MyRadio> radios,
-  }) 
-  {
-    return MyRadioList
-    (
+  MyRadioList copyWith({
+    List<MyRadio> radios,
+  }) {
+    return MyRadioList(
       radios: radios ?? this.radios,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'radios': radios.map((x) => x.toMap()).toList(),
+      'radios': radios?.map((x) => x?.toMap())?.toList(),
     };
   }
 
-  // ignore: non_constant_identifier_names
-  static MyRadioList?fromMap(Map<String, dynamic> map) 
-  {
-    if ((map).isEmpty) return null;
+  factory MyRadioList.fromMap(Map<String, dynamic> map) {
+    if (map == null) return null;
 
-    return MyRadioList
-    (
+    return MyRadioList(
       radios: List<MyRadio>.from(map['radios']?.map((x) => MyRadio.fromMap(x))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  static MyRadioList? fromJson(String source) =>
+  factory MyRadioList.fromJson(String source) =>
       MyRadioList.fromMap(json.decode(source));
 
   @override
   String toString() => 'MyRadioList(radios: $radios)';
 
   @override
-  bool operator ==(Object o) 
-  {
+  bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
     return o is MyRadioList && listEquals(o.radios, radios);
@@ -59,8 +49,7 @@ class MyRadioList
   int get hashCode => radios.hashCode;
 }
 
-class MyRadio 
-{
+class MyRadio {
   final int id;
   final int order;
   final String name;
@@ -72,38 +61,34 @@ class MyRadio
   final String icon;
   final String image;
   final String lang;
-  MyRadio
-  ({
-    required this.id,
-    required this.order,
-    required this.name,
-    required this.tagline,
-    required this.color,
-    required this.desc,
-    required this.url,
-    required this.category,
-    required this.icon,
-    required this.image,
-    required this.lang,
+  MyRadio({
+    this.id,
+    this.order,
+    this.name,
+    this.tagline,
+    this.color,
+    this.desc,
+    this.url,
+    this.category,
+    this.icon,
+    this.image,
+    this.lang,
   });
 
-  MyRadio copyWith
-  ({
-    required int id,
-    required int order,
-    required String name,
-    required String tagline,
-    required String color,
-    required String desc,
-    required String url,
-    required String category,
-    required String icon,
-    required String image,
-    required String lang,
-  }) 
-  {
-    return MyRadio
-    (
+  MyRadio copyWith({
+    int id,
+    int order,
+    String name,
+    String tagline,
+    String color,
+    String desc,
+    String url,
+    String category,
+    String icon,
+    String image,
+    String lang,
+  }) {
+    return MyRadio(
       id: id ?? this.id,
       order: order ?? this.order,
       name: name ?? this.name,
@@ -118,10 +103,8 @@ class MyRadio
     );
   }
 
-  Map<String, dynamic> toMap() 
-  {
-    return 
-    {
+  Map<String, dynamic> toMap() {
+    return {
       'id': id,
       'order': order,
       'name': name,
@@ -136,12 +119,10 @@ class MyRadio
     };
   }
 
-  static MyRadio? fromMap(Map<String, dynamic> map) 
-  {
-    if ((map).isEmpty) return null;
+  factory MyRadio.fromMap(Map<String, dynamic> map) {
+    if (map == null) return null;
 
-    return MyRadio
-    (
+    return MyRadio(
       id: map['id'],
       order: map['order'],
       name: map['name'],
@@ -158,18 +139,16 @@ class MyRadio
 
   String toJson() => json.encode(toMap());
 
-  static MyRadio? fromJson(String source) =>
+  factory MyRadio.fromJson(String source) =>
       MyRadio.fromMap(json.decode(source));
 
   @override
-  String toString() 
-  {
+  String toString() {
     return 'MyRadio(id: $id, order: $order, name: $name, tagline: $tagline, color: $color, desc: $desc, url: $url, category: $category, icon: $icon, image: $image, lang: $lang)';
   }
 
   @override
-  bool operator ==(Object o) 
-  {
+  bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
     return o is MyRadio &&
@@ -187,8 +166,7 @@ class MyRadio
   }
 
   @override
-  int get hashCode 
-  {
+  int get hashCode {
     return id.hashCode ^
         order.hashCode ^
         name.hashCode ^
